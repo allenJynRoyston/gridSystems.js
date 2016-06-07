@@ -2,7 +2,7 @@
 
 
 ### How to use
-- Build grid
+- Build grid:
 
 ```javascript
     var rows = 5,
@@ -11,10 +11,10 @@
 
     var myArray = $gs.createGrid(rows, columns, defaultValue);
 ```
-<center>
+
 [0, 0, 0, 0, 0],<br>
 [0, 0, 0, 0, 0],<br>
 [0, 0, 0, 0, 0],<br>
 [0, 0, 0, 0, 0],<br>
 [0, 0, 0, 0, 0]
-</center>
+
