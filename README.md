@@ -4,7 +4,7 @@
 ### How to use
 - Include script:
 ```javascript
-<script src='grid.js'></script>
+<script src='gridSystems.js'></script>
 ```
 
 - Build grid:
