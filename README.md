@@ -16,9 +16,22 @@
 ```javascript
     var rows = 5,
         columns = 5,
-        defaultValue = 0;
+        defaultValue = 1;
 
-    var myArray = $gs.createGrid(rows, columns, defaultValue);
+    var newGrid = $gs.createGrid(rows, columns, defaultValue);
+```
+
+| 1 1 1 1 1 |<br>
+| 1 1 1 1 1 |<br>
+| 1 1 1 1 1 |<br>
+| 1 1 1 1 1 |<br>
+| 1 1 1 1 1 |<br>
+
+
+- Reset a grid:
+
+```javascript
+    var resetGrid = $gs.resetGrid(newGrid, 0);
 ```
 
 | 0 0 0 0 0 |<br>
