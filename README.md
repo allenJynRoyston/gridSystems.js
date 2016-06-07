@@ -12,8 +12,8 @@
     var myArray = $gs.createGrid(rows, columns, defaultValue);
 ```
 
-[0, 0, 0]<br>
-[0, 0, 0]<br>
-[0, 0, 0]<br>
+|0 0 0|<br>
+|0 0 0|<br>
+|0 0 0|<br>
 
 
