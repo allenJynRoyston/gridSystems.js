@@ -63,3 +63,30 @@ var coordsWithZeros = $gs.scanGridForKeys({grid: testGrid, exclude: [0], include
 // output:  [{row: 0, column: 1}, {row: 0, column: 2}, etc]
 
 ```
+
+
+- Get a bloom heat map:
+```javascript
+
+var testGrid = [    
+                    [0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0],
+                    [0, 0, 1, 0, 0],
+                    [0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0],
+               ]
+
+
+$gs.mapBloom({gridTo: testGrid, row: 2, column: 2, bloomSize: 2, N:true, E:true, S: true, W:true, NE:true, NW: true, SE: true, SW: true, exportCords: true})
+
+/* OUTPUT 
+
+    [0, 0, 1, 0, 0],
+    [0, 1, 2, 1, 0],
+    [1, 2, 3, 2, 1],
+    [0, 1, 2, 1, 0],
+    [0, 0, 1, 0, 0],
+
+*/
+
+```
