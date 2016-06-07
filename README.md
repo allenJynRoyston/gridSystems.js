@@ -77,7 +77,7 @@ var coordsWithZeros = $gs.scanGridForKeys({grid: testGrid, exclude: [0], include
 */
 
 
-$gs.mapBloom({gridTo: testGrid, row: 2, column: 2, bloomSize: 3, N:true, E:true, S: true, W:true, NE:true, NW: true, SE: true, SW: true, exportCords: true})
+$gs.mapBloom({gridTo: testGrid, coords: [{row: 2, column: 2}], bloomSize: 3, N:true, E:true, S: true, W:true, NE:true, NW: true, SE: true, SW: true, exportCords: true})
 
 /* OUTPUT 
 /* GRID  
@@ -102,8 +102,8 @@ $gs.mapBloom({gridTo: testGrid, row: 2, column: 2, bloomSize: 3, N:true, E:true,
 
 
 
-$gs.mapBloom({gridTo: testGrid, row: 2, column: 2, bloomSize: 3, N:true, E:true, S: true, W:true, NE:true, NW: true, SE: true, SW: true, exportCords: true})
-$gs.mapBloom({gridTo: testGrid, row: 2, column: 4, bloomSize: 3, N:true, E:true, S: true, W:true, NE:true, NW: true, SE: true, SW: true, exportCords: true})
+$gs.mapBloom({gridTo: testGrid, coords: [{row: 2, column: 2}, {row: 2, column: 4}],  bloomSize: 3, N:true, E:true, S: true, W:true, NE:true, NW: true, SE: true, SW: true, exportCords: true})
+
 
 /* OUTPUT 
 
