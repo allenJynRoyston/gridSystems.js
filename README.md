@@ -71,7 +71,7 @@ var coordsWithZeros = $gs.scanGridForKeys({grid: testGrid, exclude: [0], include
 var testGrid = [    
                     [0, 0, 0, 0, 0],
                     [0, 0, 0, 0, 0],
-                    [0, 0, 1, 0, 0],
+                    [0, 0, X, 0, 0],
                     [0, 0, 0, 0, 0],
                     [0, 0, 0, 0, 0],
                ]
@@ -81,12 +81,38 @@ $gs.mapBloom({gridTo: testGrid, row: 2, column: 2, bloomSize: 2, N:true, E:true,
 
 /* OUTPUT 
 
-    [0, 0, 1, 0, 0],
-    [0, 1, 2, 1, 0],
-    [1, 2, 3, 2, 1],
-    [0, 1, 2, 1, 0],
-    [0, 0, 1, 0, 0],
+                    [0, 0, 1, 0, 0],
+                    [0, 1, 2, 1, 0],
+                    [1, 2, 3, 2, 1],
+                    [0, 1, 2, 1, 0],
+                    [0, 0, 1, 0, 0],
 
 */
+```
+
+- Heatmaps that overlap will add to each other:
+```javascript
+var testGrid = [    
+                    [0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, X, 0, X, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0],
+               ]
+
+
+
+$gs.mapBloom({gridTo: testGrid, row: 2, column: 2, bloomSize: 2, N:true, E:true, S: true, W:true, NE:true, NW: true, SE: true, SW: true, exportCords: true})
+
+/* OUTPUT 
+
+                    [0, 0, 1, 0, 1, 0, 0]
+                    [0, 1, 2, 2, 2, 1, 0]
+                    [1, 2, 3, 5, 3, 2, 1]
+                    [0, 1, 2, 2, 2, 1, 0]
+                    [0, 0, 1, 0, 1, 0, 0]
+
+*/
+
 
 ```
