@@ -31,7 +31,10 @@
 - Reset a grid:
 
 ```javascript
-    var resetGrid = $gs.resetGrid(newGrid, 0);
+    var grid = newGrid,
+        resetValue = 0;
+    
+    var resetGrid = $gs.resetGrid(grid, resetValue);
 ```
 
 | 0 0 0 0 0 |<br>
