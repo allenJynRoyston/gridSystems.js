@@ -2,6 +2,11 @@
 
 
 ### How to use
+- Include script:
+```javascript
+<script src='grid.js'></script>
+```
+
 - Build grid:
 
 ```javascript
