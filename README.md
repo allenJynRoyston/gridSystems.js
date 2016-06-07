@@ -68,19 +68,19 @@ var coordsWithZeros = $gs.scanGridForKeys({grid: testGrid, exclude: [0], include
 - Get a bloom heat map:
 ```javascript
 
-var testGrid = [    
+/* GRID  
                     [0, 0, 0, 0, 0],
                     [0, 0, 0, 0, 0],
                     [0, 0, X, 0, 0],
                     [0, 0, 0, 0, 0],
                     [0, 0, 0, 0, 0],
-               ]
+*/
 
 
-$gs.mapBloom({gridTo: testGrid, row: 2, column: 2, bloomSize: 2, N:true, E:true, S: true, W:true, NE:true, NW: true, SE: true, SW: true, exportCords: true})
+$gs.mapBloom({gridTo: testGrid, row: 2, column: 2, bloomSize: 3, N:true, E:true, S: true, W:true, NE:true, NW: true, SE: true, SW: true, exportCords: true})
 
 /* OUTPUT 
-
+/* GRID  
                     [0, 0, 1, 0, 0],
                     [0, 1, 2, 1, 0],
                     [1, 2, 3, 2, 1],
@@ -92,17 +92,18 @@ $gs.mapBloom({gridTo: testGrid, row: 2, column: 2, bloomSize: 2, N:true, E:true,
 
 - Heatmaps that overlap will add to each other:
 ```javascript
-var testGrid = [    
+/* GRID  
                     [0, 0, 0, 0, 0, 0, 0],
                     [0, 0, 0, 0, 0, 0, 0],
                     [0, 0, X, 0, X, 0, 0],
                     [0, 0, 0, 0, 0, 0, 0],
                     [0, 0, 0, 0, 0, 0, 0],
-               ]
+*/
 
 
 
-$gs.mapBloom({gridTo: testGrid, row: 2, column: 2, bloomSize: 2, N:true, E:true, S: true, W:true, NE:true, NW: true, SE: true, SW: true, exportCords: true})
+$gs.mapBloom({gridTo: testGrid, row: 2, column: 2, bloomSize: 3, N:true, E:true, S: true, W:true, NE:true, NW: true, SE: true, SW: true, exportCords: true})
+$gs.mapBloom({gridTo: testGrid, row: 2, column: 4, bloomSize: 3, N:true, E:true, S: true, W:true, NE:true, NW: true, SE: true, SW: true, exportCords: true})
 
 /* OUTPUT 
 
