@@ -55,8 +55,11 @@ var testGrid = [
 
 // will grab all coordinates with a 1, 2 or 3 in it
 var coordsWithNumbers = $gs.scanGridForKeys({grid: testGrid, exclude: [], include:[1, 2, 3]})
+// output:  [{row: 0, column: 0}, {row: 1, column: 1}, etc]
+
 
 // will grab all coordinates with a 0 in it
-$gs.scanGridForKeys({grid: testGrid, exclude: [0], include:[]})
 var coordsWithZeros = $gs.scanGridForKeys({grid: testGrid, exclude: [0], include:[]})
+// output:  [{row: 0, column: 1}, {row: 0, column: 2}, etc]
+
 ```
