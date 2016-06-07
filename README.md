@@ -44,3 +44,19 @@
 | 0 0 0 0 0 |<br>
 
 
+- Scan grid for keys:
+```javascript
+
+var testGrid = [    
+                    [1, 0, 0],
+                    [0, 2, 0],
+                    [0, 0, 3]
+               ]
+
+// will grab all coordinates with a 1, 2 or 3 in it
+var coordsWithNumbers = $gs.scanGridForKeys({grid: testGrid, exclude: [], include:[1, 2, 3]})
+
+// will grab all coordinates with a 0 in it
+$gs.scanGridForKeys({grid: testGrid, exclude: [0], include:[]})
+var coordsWithZeros = $gs.scanGridForKeys({grid: testGrid, exclude: [0], include:[]})
+```
