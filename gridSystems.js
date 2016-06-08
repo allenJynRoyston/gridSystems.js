@@ -74,8 +74,7 @@ function __grid(properties){
   this.mapBloom = function(options){
 
     var gridTo    = options.gridTo,
-        row       = options.row,
-        column    = options.column,
+        coords    = options.coords,
         _n        = options.N,
         _e        = options.E,
         _s        = options.S,
@@ -88,109 +87,121 @@ function __grid(properties){
         exportCords  = options.exportCords;
 
 
-    var coords = [];
+    var _returnCoords = [];
+
+    for(var c = 0; c < coords.length; c++){
+      row       = coords[c].row,
+      column    = coords[c].column
 
 
-    gridTo[row][column] = bloomSize + gridTo[row][column];
-    for(var i = 1; i < bloomSize; i++){
+      gridTo[row][column] = bloomSize + gridTo[row][column];
+      for(var i = 1; i < bloomSize; i++){
 
-        // up
-        if( (row - i) >= 0 ){
+          // up
+          if( (row - i) >= 0 ){
 
-          if(_n){
-            gridTo[row - i][column] = gridTo[row - i][column] + (bloomSize - i);
-            if(exportCords){
-              coords.push({row: row - i, column:  column, value: gridTo[row - i][column] + (bloomSize - i)})
+            if(_n){
+              gridTo[row - i][column] = gridTo[row - i][column] + (bloomSize - i);
+              if(exportCords){
+                _returnCoords.push({row: row - i, column:  column, value: gridTo[row - i][column] + (bloomSize - i)})
+              }
             }
-          }
-          for(var n = 1; n < bloomSize; n++){
-              // right
-              if(_ne){
-                if( (column + i) < gridTo[row - i].length - n ){
-                  if(gridTo[row - i][column + n] + (bloomSize - i - n) > 0){
-                    gridTo[row - i][column + n] = gridTo[row - i][column + n] + (bloomSize - i - n);
-                    if(exportCords){
-                      coords.push({row: row - i, column:  column + n, value: gridTo[row - i][column + n] + (bloomSize - i - n)})
+            for(var n = 1; n < bloomSize; n++){
+
+                // right
+                if(_ne){
+                  if( (column + i) < gridTo[row - i].length - n ){
+                    if(gridTo[row - i][column + n] + (bloomSize - i - n) > 0){
+                      gridTo[row - i][column + n] = gridTo[row - i][column + n] + (bloomSize - i - n);
+                      if(exportCords){
+                        _returnCoords.push({row: row - i, column:  column + n, value: gridTo[row - i][column + n] + (bloomSize - i - n)})
+                      }
                     }
                   }
                 }
-              }
 
-              // left
-              if(_nw){
-                if( (column - i) < gridTo[row - i].length - n ){
-                  if(gridTo[row - i][column - n] + (bloomSize - i - n) > 0){
-                    gridTo[row - i][column - n] = gridTo[row - i][column - n] + (bloomSize - i - n);
-                    if(exportCords){
-                      coords.push({row: row - i, column:  column - n, value: gridTo[row - i][column - n] + (bloomSize - i - n)})
+                // left
+                if(_nw){
+                  if( (column - i) < gridTo[row - i].length - n ){
+                    if(gridTo[row - i][column - n] + (bloomSize - i - n) > 0){
+                      gridTo[row - i][column - n] = gridTo[row - i][column - n] + (bloomSize - i - n);
+                      if(exportCords){
+                        _returnCoords.push({row: row - i, column:  column - n, value: gridTo[row - i][column - n] + (bloomSize - i - n)})
+                      }
                     }
                   }
                 }
-              }
-          }
-        }
 
-        // bottom
-        if( (row + i) < gridTo.length ){
-
-          if(_s){
-            gridTo[row + i][column] = gridTo[row + i][column] + (bloomSize - i);
-            if(exportCords){
-              coords.push({row: row + i, column:  column, value: gridTo[row + i][column] + (bloomSize - i)})
             }
           }
-          for(var n = 1; n < bloomSize; n++){
-              // right
-              if(_se){
-                if( (column + i) < gridTo[row - i].length - n ){
-                  if(gridTo[row + i][column + n] + (bloomSize - i - n) > 0){
-                    gridTo[row + i][column + n] = gridTo[row + i][column + n] + (bloomSize - i - n);
-                    if(exportCords){
-                      coords.push({row: row + i, column: column + n, value: gridTo[row + i][column + n] + (bloomSize - i - n)})
+
+
+          // bottom
+          if( (row + i) < gridTo.length ){
+
+            if(_s){
+              gridTo[row + i][column] = gridTo[row + i][column] + (bloomSize - i);
+              if(exportCords){
+                _returnCoords.push({row: row + i, column:  column, value: gridTo[row + i][column] + (bloomSize - i)})
+              }
+            }
+            for(var n = 1; n < bloomSize; n++){
+
+                // right
+                if(_se){
+                  if( (column + i) < gridTo[row - i].length - n ){
+                    if(gridTo[row + i][column + n] + (bloomSize - i - n) > 0){
+                      gridTo[row + i][column + n] = gridTo[row + i][column - n] + (bloomSize - i - n);
+                      if(exportCords){
+                        _returnCoords.push({row: row + i, column: column + n, value: gridTo[row + i][column + n] + (bloomSize - i - n)})
+                      }
                     }
                   }
                 }
-              }
 
-              // left
-              if(_sw){
-                if( (column - i) < gridTo[row - i].length - n ){
-                  if(gridTo[row + i][column - n] + (bloomSize - i - n) > 0){
-                    gridTo[row + i][column - n] = gridTo[row + i][column - n] + (bloomSize - i - n);
-                    if(exportCords){
-                      coords.push({row: row + i, column: column - n, value: gridTo[row + i][column - n] + (bloomSize - i - n)})
+
+                // left
+                if(_sw){
+                  if( (column - i) < gridTo[row - i].length - n ){
+                    if(gridTo[row + i][column - n] + (bloomSize - i - n) > 0){
+                      gridTo[row + i][column - n] = gridTo[row + i][column - n] + (bloomSize - i - n);
+                      if(exportCords){
+                        _returnCoords.push({row: row + i, column: column - n, value: gridTo[row + i][column - n] + (bloomSize - i - n)})
+                      }
                     }
                   }
                 }
+
+            }
+          }
+
+
+          // right
+          if(_e){
+            if( (column + i) < gridTo[row].length ){
+              gridTo[row][column + i] = gridTo[row][column + i] + (bloomSize - i);
+              if(exportCords){
+                _returnCoords.push({row: row, column: column + i, value: gridTo[row][column + i] + (bloomSize - i)})
               }
-          }
-        }
-
-        // right
-        if(_e){
-          if( (column + i) < gridTo[row].length ){
-            gridTo[row][column + i] = gridTo[row][column + i] + (bloomSize - i);
-            if(exportCords){
-              coords.push({row: row, column: column + i, value: gridTo[row][column + i] + (bloomSize - i)})
             }
           }
-        }
 
-        // left
-        if(_w){
-          if( (column - i) >= 0){
-            gridTo[row][column - i] = gridTo[row][column - i] + (bloomSize - i);
-            if(exportCords){
-              coords.push({row: row, column: column - i, value: gridTo[row][column - i] + (bloomSize - i)})
+          // left
+          if(_w){
+            if( (column - i) >= 0){
+              gridTo[row][column - i] = gridTo[row][column - i] + (bloomSize - i);
+              if(exportCords){
+                _returnCoords.push({row: row, column: column - i, value: gridTo[row][column - i] + (bloomSize - i)})
+              }
             }
           }
-        }
 
+
+
+      }
 
     }
-
-
-    //return gridTo;
+    return _returnCoords;
 
 
 
