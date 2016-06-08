@@ -12,6 +12,7 @@
 
 ### Functions
 - Build any 2 dimensional array:
+- $gs.resetGrid(<array>, <number>);
 
 ```javascript
     var rows = 5,
