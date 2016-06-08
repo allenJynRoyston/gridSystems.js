@@ -11,8 +11,9 @@
 
 
 ### Functions
+## createGrid()
 - Build any 2 dimensional array:
-- $gs.resetGrid(array, number);
+- $gs.createGrid(number, number, number);
 
 ```javascript
     var rows = 5,
@@ -28,7 +29,7 @@
 | 1 1 1 1 1 |<br>
 | 1 1 1 1 1 |<br>
 
-
+## resetGrid()
 - Reset a grid:
 - $gs.resetGrid(array, number);
 ```javascript
@@ -44,7 +45,7 @@
 | 0 0 0 0 0 |<br>
 | 0 0 0 0 0 |<br>
 
-
+## scanGridForKeys()
 - Scan grid for keys:
 - $gs.scanGridForKeys({grid:array, exclude:array, include:array})
 ```javascript
@@ -70,7 +71,7 @@ var coordsWithZeros = $gs.scanGridForKeys({grid: testGrid, exclude: [0], include
 
 ```
 
-
+## mapBloom()
 - Get a bloom heat map:
 - $gs.mapBloom({gridTo:array, coords:array, bloomSize:number, N:boolean, E:boolean, S:boolean, W:boolean, NE:boolean, NW:boolean, SE:boolean, SW:boolean, exportCords:boolean})
 ```javascript
