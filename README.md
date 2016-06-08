@@ -58,8 +58,12 @@ var coordsWithNumbers = $gs.scanGridForKeys({grid: testGrid, exclude: [], includ
 // output:  [{row: 0, column: 0}, {row: 1, column: 1}, etc]
 
 
-// will grab all coordinates with a 0 in it
+// will grab all coordinates that do NOT have a 0 in it
 var coordsWithZeros = $gs.scanGridForKeys({grid: testGrid, exclude: [0], include:[]})
+// output:  [{row: 0, column: 1}, {row: 0, column: 2}, etc]
+
+// can be used in conjunction (will grab anything NOT 0 and anything with a 1 in it)
+var coordsWithZeros = $gs.scanGridForKeys({grid: testGrid, exclude: [0], include:[1]})
 // output:  [{row: 0, column: 1}, {row: 0, column: 2}, etc]
 
 ```
