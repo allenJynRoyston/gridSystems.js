@@ -12,7 +12,7 @@
 
 ### Functions
 - Build any 2 dimensional array:
-- $gs.resetGrid(<array>, <number>);
+- $gs.resetGrid(array, number);
 
 ```javascript
     var rows = 5,
@@ -30,7 +30,7 @@
 
 
 - Reset a grid:
-
+- $gs.resetGrid(array, number);
 ```javascript
     var grid = newGrid,
         resetValue = 0;
@@ -46,6 +46,7 @@
 
 
 - Scan grid for keys:
+- $gs.scanGridForKeys({grid:array, exclude:array, include:array})
 ```javascript
 
 var testGrid = [    
@@ -71,6 +72,7 @@ var coordsWithZeros = $gs.scanGridForKeys({grid: testGrid, exclude: [0], include
 
 
 - Get a bloom heat map:
+- $gs.mapBloom({gridTo:array, coords:array, bloomSize:number, N:boolean, E:boolean, S:boolean, W:boolean, NE:boolean, NW:boolean, SE:boolean, SW:boolean, exportCords:boolean})
 ```javascript
 
 /* GRID  
